@@ -73,8 +73,10 @@ def shopping2():
     while True:
 
         print ''
-        print '*** MAIN MENU ***'
+        print '*** SHOPPING LIST 2.0 MAIN MENU ***'
+        print ''
         print 'Would you like to:'
+        print ''
         print '(1) Display your stores and shopping lists'
         print '(2) Look up specific shopping list by store'
         print '(3) Add, edit or delete a store'
@@ -82,6 +84,8 @@ def shopping2():
         print 'or enter Q to quit.'
 
         choice = raw_input('>>> ')
+
+        print ''
 
         if choice == '1':
             if shopping_list == {}:
@@ -110,50 +114,61 @@ def shopping2():
         elif choice == '3':
 
             print 'Would you like to: (1) Add (2) Delete or (3) Edit?'
-            print '(Q to exit to main menu):'
+            print '(B to return to main menu)'
             entry = raw_input('>>> ')
+            print ''
 
             if entry == '1':
                 store = raw_input('What store would you like to add?: ')
                 shopping_list[store] = []
-                print store, 'added!'
+                print store, 'added to stores!'
                 continue
 
             elif entry == '2':
-                store = raw_input('Which store would you like to delete?: ')
+                print 'Which store would you like to delete?: '
+                print '(This will delete the associated list as well)'
+                store = raw_input('>>>')
                 if store not in shopping_list:
                     print 'That store is not on the list'
                     continue
                 del shopping_list[store]
-                print store, 'and the associated list have been removed'
+                print store, 'and the associated shopping list have been removed'
                 continue
 
             elif entry == '3':
-                store = raw_input('Which store would you like to edit?: ')
+                print 'Which store would you like to edit?: '
+                store = raw_input('>>>')
                 if store not in shopping_list:
                     print 'That store is not on the list'
                     continue
-                edit = raw_input('What would you like to change it to?: ')
+                print 'What would you like to change it to?: '
+                edit = raw_input('>>>')
+                print ''
                 shopping_list[edit] = shopping_list[store]
                 del shopping_list[store]
                 print store, 'has been changed to', edit
                 continue
 
-            elif entry == 'Q':
-                break
+            elif entry == 'B':
+                continue
 
             else:
                 print 'That was not a valid option, please choose again.'
                 continue
 
         elif choice == '4':
-            store = raw_input('Which store list would you like to work with?: ')
-            if store not in shopping_list:
+            print ''
+            print 'Which store list would you like to work with?:'
+            print '(B to go back to main menu)'
+            store = raw_input('>>>')
+            if store == 'B':
+                continue
+            elif store not in shopping_list:
                 print 'That store is not on the list'
                 continue
 
             print 'Would you like to: (1) Add (2) Delete or (3) Edit the list?'
-            print '(Q to exit to main menu):'
+            print '(B to return to main menu):'
             entry = raw_input('>>> ')
 
             if entry == '1':
@@ -188,8 +203,8 @@ def shopping2():
                     print shopping_list[store]
                     continue
 
-            elif entry == 'Q':
-                break
+            elif entry == 'B':
+                continue
 
             else:
                     print 'That was not a valid option, please choose again.'
